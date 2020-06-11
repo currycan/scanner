@@ -1,7 +1,9 @@
 FROM golang:1.14 as builder
-WORKDIR $GOPATH/src/github.com/currycan/scanner
-COPY ./ ./
-RUN set -ex;CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make
+WORKDIR $GOPATH/src/github.com/currycan/
+RUN set -ex; \
+    git clone https://github.com/currycan/scanner.git; \
+    cd scanner; \
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make
 
 FROM alpine:3.12
 LABEL maintainer="currycan <ansandy@foxmail.com>"
