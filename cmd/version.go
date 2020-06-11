@@ -18,7 +18,7 @@ package cmd
 import (
 	"fmt"
 
-	"scanner/version"
+	"github.com/currycan/scanner/version"
 
 	"github.com/spf13/cobra"
 )

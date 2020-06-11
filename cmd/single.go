@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"scanner/core"
+	"github.com/currycan/scanner/core"
 
 	"github.com/spf13/cobra"
 )

@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"os"
 
-	"scanner/core"
+	"github.com/currycan/scanner/core"
 
 	"github.com/mitchellh/go-homedir"
 	"github.com/sirupsen/logrus"
