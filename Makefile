@@ -1,8 +1,7 @@
 .PHONY: cmd clean
 
 cmd: $(wildcard ./cmd/*.go ./core/*.go ./version/*.go ./*.go)
-	go build -o scanner;
-	./scanner -h
+	go build -ldflags "-s -w" -o scanner;
 
 clean:
 	rm scanner

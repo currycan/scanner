@@ -1,13 +1,15 @@
 FROM golang:1.14 as builder
 WORKDIR $GOPATH/src/github.com/currycan/
-RUN set -ex; \
-    git clone https://github.com/currycan/scanner.git; \
-    cd scanner; \
-    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make
+ENV GOPROXY=https://goproxy.cn
+COPY ./go.mod ./
+COPY ./go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make
 
 FROM alpine:3.12
 LABEL maintainer="currycan <ansandy@foxmail.com>"
-COPY --from=builder $GOPATH/src/github.com/currycan/scanner/scanner /usr/local/bin
+COPY --from=builder /go/src/github.com/currycan/scanner/scanner /usr/bin
 RUN apk add -U --no-cache ca-certificates \
     tzdata busybox-extras curl ca-certificates; \
     ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime; \
