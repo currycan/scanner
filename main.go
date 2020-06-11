@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "scanner/cmd"
+import "github.com/currycan/scanner/cmd"
 
 func main() {
 	cmd.Execute()
