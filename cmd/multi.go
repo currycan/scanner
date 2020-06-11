@@ -92,7 +92,7 @@ func initConfig() {
 
 	if err := viper.ReadInConfig(); err != nil {
 		fmt.Println("Can't read config:", err)
-		fmt.Println("You can run 'scanner multi --help' to get help")
+		fmt.Println("You can run 'scanner --help' to get help")
 		os.Exit(1)
 	}
 
