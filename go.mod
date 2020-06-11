@@ -1,4 +1,4 @@
-module scanner
+module githube.com/currycan/scanner
 
 go 1.14
 
