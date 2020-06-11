@@ -73,7 +73,7 @@ scanner multi -c /path/to/conf/scanner.yaml (specify config)
 func init() {
 	rootCmd.AddCommand(multiCmd)
 
-	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file (default is $HOME/scanner.yaml)")
+	multiCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file (default is $HOME/scanner.yaml)")
 }
 
 func initConfig() {
