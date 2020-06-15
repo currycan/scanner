@@ -1,6 +1,6 @@
 ---
 type: prod
-Outbounds:
+services:
 - name: redis
   project: abc-zf-ss-123
   host: 10.177.92.2
@@ -12,10 +12,4 @@ Outbounds:
 - name: baidu
   project: others
   host: baidu.com
-  port: 443
-
-inbounds:
-- name: nginx
-  project: abc-zf-ss-lmn
-  host: 104.224.178.206
   port: 443
