@@ -15,7 +15,7 @@ limitations under the License.
 */
 package cmd
 
-import "C"
+//import "C"
 import (
 	"fmt"
 	"os"
@@ -72,7 +72,7 @@ If you want to open the debug mode,you can add '--debug true in the end of comma
 				}
 			}
 		} else if lineName != "" && lineProject != "" && lineHost != "" && linePort != 0 {
-			core.Scan(s.Host, s.Port, s.Project, s.Name)
+			core.Scan(lineHost, linePort, lineProject, lineName)
 		} else {
 			cmd.Help()
 			return
