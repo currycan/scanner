@@ -1,6 +1,6 @@
 FROM golang:1.14-alpine as builder
 
-WORKDIR $GOPATH/src/github.com/currycan/
+WORKDIR $GOPATH/src/github.com/currycan/scanner
 
 #ENV GOPROXY=https://goproxy.cn
 
