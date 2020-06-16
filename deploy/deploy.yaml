@@ -1,0 +1,61 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  scanner
+  labels:
+    app: scanner
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: scanner
+  namespace: scanner
+spec:
+  selector:
+    matchLabels:
+      name: scanner
+  template:
+    metadata:
+      labels:
+        name: scanner
+    spec:
+      containers:
+        - name: scanner
+          image: currycan/scanner:0.0.1
+          volumeMounts:
+            - name: services
+              # 使用子路径方式挂载的数据卷，将不会触发更新。
+              # mountPath: /etc/scanner/scanner.yaml
+              # subPath: scanner.yaml
+              mountPath: /etc/scanner/
+          resources: {}
+      volumes:
+        - name: services
+          configMap:
+            defaultMode: 0660
+            name: services
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services
+  namespace: scanner
+  labels:
+    app: scanner
+data:
+  scanner.yaml: |
+    type: prod
+    services:
+      - name: redis
+        project: abc-zf-ss-123
+        host: 10.10.10.1
+        port: 6379
+      - name: api-server
+        project: abc-zf-ss-lmn
+        host: 10.10.10.2
+        port: 6443
+      - name: baidu
+        project: others
+        host: baidu.com
+        port: 443
